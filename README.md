@@ -69,13 +69,13 @@ OpenAI's current Batch API supports `/v1/responses`; the real batch path uses th
 
 ## GitHub Pages And CNAME
 
-The current Vite base path is:
+The site is configured for this custom domain:
 
-```ts
-base: "/quick_recipe_creator/"
+```text
+essential-recipes.thefrenchartist.dev
 ```
 
-When the custom domain is ready, switch the base path to `/`, add `public/CNAME`, then run `make deploy`.
+Vite uses `base: "/"`, and `public/CNAME` is deployed with the static site.
 
 ## Versioning Rules
 
