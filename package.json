@@ -1,0 +1,44 @@
+{
+  "name": "quick_recipe_creator",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A static online recipe atlas with generated recipe-card images.",
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "pages": "gh-pages -d dist",
+    "images:build-jsonl": "node scripts/batch-images.mjs build-jsonl",
+    "images:upload-template": "node scripts/batch-images.mjs upload-template",
+    "images:submit": "node scripts/batch-images.mjs submit",
+    "images:poll": "node scripts/batch-images.mjs poll",
+    "images:poll-retry": "node scripts/batch-images.mjs poll-retry",
+    "images:status": "node scripts/batch-images.mjs status",
+    "images:rebuild-assets": "node scripts/batch-images.mjs rebuild-assets"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.17",
+    "@vitejs/plugin-react": "^5.1.1",
+    "archiver": "^7.0.1",
+    "gh-pages": "^6.3.0",
+    "lucide-react": "^0.561.0",
+    "openai": "^6.10.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-router-dom": "^7.10.1",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@types/node": "^25.0.0",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "jsdom": "^27.2.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.7",
+    "vitest": "^4.0.15"
+  }
+}

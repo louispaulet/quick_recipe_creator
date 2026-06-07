@@ -1,0 +1,590 @@
+{
+  "title": "The Essential Home-Cook Atlas",
+  "concept": "A practical recipe book covering the essential dishes, pantry staples, techniques, and meal logic of major world cuisines, with a strong focus on France, including the DOM-TOM / DROM-COM.",
+  "cuisines": [
+    {
+      "id": "france_mainland",
+      "name": "France Mainland",
+      "focus": "classic French home, bistro, and regional cooking",
+      "coreSkills": ["roux", "vinaigrette", "pan sauce", "stock", "braising", "pate brisee", "custard"],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Classic French Recipes",
+          "recipes": [
+            "onion soup",
+            "quiche lorraine",
+            "croque-monsieur",
+            "ratatouille",
+            "gratin dauphinois",
+            "steak frites with bearnaise",
+            "poulet roti",
+            "blanquette de veau",
+            "boeuf bourguignon",
+            "coq au vin",
+            "cassoulet",
+            "moules marinieres",
+            "sole meuniere",
+            "crepes",
+            "tarte tatin",
+            "mousse au chocolat",
+            "creme brulee"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "france_overseas_dom_tom",
+      "name": "France Overseas DOM-TOM",
+      "focus": "French Caribbean, Indian Ocean, Pacific, and Guianese foodways",
+      "coreSkills": [
+        "spice pastes",
+        "coconut milk sauces",
+        "rougail",
+        "fried fritters",
+        "lime marinades",
+        "smoked and grilled meats",
+        "tropical fruit desserts"
+      ],
+      "groups": [
+        {
+          "id": "guadeloupe_martinique",
+          "name": "Guadeloupe And Martinique",
+          "recipes": [
+            "accras de morue",
+            "colombo de poulet",
+            "poulet boucane",
+            "boudin creole",
+            "dombres aux crevettes",
+            "flan coco",
+            "ti-punch"
+          ]
+        },
+        {
+          "id": "la_reunion",
+          "name": "La Reunion",
+          "recipes": [
+            "rougail saucisse",
+            "cari poulet",
+            "bouchons reunionnais",
+            "achards de legumes",
+            "gateau patate"
+          ]
+        },
+        {
+          "id": "guyane",
+          "name": "Guyane",
+          "recipes": ["bouillon d'awara", "blaff de poisson", "marinades de poisson"]
+        },
+        {
+          "id": "mayotte_comoros_influence",
+          "name": "Mayotte And Comoros Influence",
+          "recipes": ["pilao", "mataba", "poisson au coco"]
+        },
+        {
+          "id": "polynesie_francaise",
+          "name": "Polynesie Francaise",
+          "recipes": ["poisson cru au lait de coco", "poulet fafa", "firi firi"]
+        }
+      ]
+    },
+    {
+      "id": "spain",
+      "name": "Spain",
+      "focus": "olive oil, rice, seafood, pork, legumes, eggs, and tapas",
+      "coreSkills": ["sofrito", "rice texture", "aioli", "tapas assembly", "olive-oil cooking"],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Spanish Recipes",
+          "recipes": [
+            "tortilla espanola",
+            "pan con tomate",
+            "gazpacho",
+            "salmorejo",
+            "patatas bravas",
+            "croquetas",
+            "gambas al ajillo",
+            "pulpo a la gallega",
+            "paella valenciana",
+            "arroz negro",
+            "fabada asturiana",
+            "albondigas",
+            "churros con chocolate",
+            "crema catalana"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "british_irish",
+      "name": "British And Irish",
+      "focus": "roasts, pies, puddings, breakfasts, preserves, and pub food",
+      "coreSkills": ["pastry crusts", "gravy", "roasting", "mashed potatoes", "puddings", "batter frying"],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "British And Irish Recipes",
+          "recipes": [
+            "full English breakfast",
+            "welsh rarebit",
+            "scotch eggs",
+            "fish and chips",
+            "shepherd's pie",
+            "steak and ale pie",
+            "bangers and mash",
+            "roast beef with Yorkshire pudding",
+            "cornish pasties",
+            "irish stew",
+            "soda bread",
+            "sticky toffee pudding",
+            "apple crumble",
+            "scones"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "germany_austria_central_europe",
+      "name": "Germany, Austria, And Central Europe",
+      "focus": "bread, pork, sausages, cabbage, potatoes, dumplings, cakes, and pickles",
+      "coreSkills": ["bread-like doughs", "dumplings", "pickling", "cabbage cookery", "pan-frying cutlets"],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Central European Recipes",
+          "recipes": [
+            "schnitzel",
+            "sauerbraten",
+            "bratwurst with sauerkraut",
+            "currywurst",
+            "kartoffelsalat",
+            "spaetzle",
+            "kaesespaetzle",
+            "goulash",
+            "red cabbage",
+            "pretzels",
+            "black forest cake",
+            "apfelstrudel"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "italy",
+      "name": "Italy",
+      "focus": "pasta, rice, tomato, olive oil, seafood, braises, vegetables, and desserts",
+      "coreSkills": ["pasta water emulsions", "risotto", "tomato sauce", "slow ragu", "fresh pasta", "antipasti"],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Italian Recipes",
+          "recipes": [
+            "tomato sauce",
+            "pesto alla genovese",
+            "carbonara",
+            "cacio e pepe",
+            "amatriciana",
+            "ragu alla bolognese",
+            "lasagne",
+            "risotto alla milanese",
+            "osso buco",
+            "eggplant parmigiana",
+            "focaccia",
+            "pizza margherita",
+            "minestrone",
+            "tiramisu",
+            "panna cotta"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "japan",
+      "name": "Japan",
+      "focus": "rice, dashi, soy, mirin, miso, pickles, noodles, frying, and grilling",
+      "coreSkills": ["rice cooking", "dashi", "tare", "tempura-style frying", "bento logic", "umami layering"],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Japanese Recipes",
+          "recipes": [
+            "steamed Japanese rice",
+            "dashi",
+            "miso soup",
+            "tamagoyaki",
+            "onigiri",
+            "teriyaki salmon or chicken",
+            "karaage",
+            "tonkatsu",
+            "Japanese curry",
+            "gyoza",
+            "okonomiyaki",
+            "ramen",
+            "soba dipping noodles",
+            "chawanmushi",
+            "matcha or black sesame dessert"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "china",
+      "name": "China",
+      "focus": "regional Chinese cooking organized by technique and flavor",
+      "coreSkills": [
+        "wok cooking",
+        "velveting",
+        "dumpling folding",
+        "chili oil",
+        "soy-braising",
+        "steaming fish",
+        "rice and noodle foundations"
+      ],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Chinese Recipes",
+          "recipes": [
+            "egg fried rice",
+            "scallion pancakes",
+            "jiaozi",
+            "wontons in chili oil",
+            "mapo tofu",
+            "kung pao chicken",
+            "red-braised pork",
+            "char siu",
+            "cantonese steamed fish",
+            "hot and sour soup",
+            "dan dan noodles",
+            "beef noodle soup",
+            "tomato egg stir-fry",
+            "congee",
+            "sesame balls"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thailand",
+      "name": "Thailand",
+      "focus": "balance of sour, sweet, salty, spicy, bitter, herbal, and crunchy",
+      "coreSkills": [
+        "curry pastes",
+        "fish sauce balance",
+        "lime acidity",
+        "herb handling",
+        "coconut milk separation",
+        "wok noodles"
+      ],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Thai Recipes",
+          "recipes": [
+            "thai curry paste",
+            "green curry",
+            "red curry",
+            "massaman curry",
+            "tom yum",
+            "tom kha gai",
+            "pad thai",
+            "pad see ew",
+            "larb",
+            "som tam",
+            "thai basil chicken",
+            "mango sticky rice",
+            "nam jim dipping sauces"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "indonesia",
+      "name": "Indonesia",
+      "focus": "sambal, coconut, peanuts, rice, grilling, spice pastes, frying, and kecap manis",
+      "coreSkills": ["bumbu spice paste", "sambal", "coconut braising", "kecap manis glaze", "rice meals"],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Indonesian Recipes",
+          "recipes": [
+            "nasi goreng",
+            "mie goreng",
+            "satay ayam with peanut sauce",
+            "rendang",
+            "gado-gado",
+            "soto ayam",
+            "semur",
+            "ayam goreng",
+            "sambal oelek",
+            "sambal matah",
+            "tempeh kecap",
+            "martabak",
+            "klepon",
+            "dadar gulung"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "united_states",
+      "name": "United States",
+      "focus": "regional American food: Southern, New England, Texan, Californian, New York, Midwest, and diner food",
+      "coreSkills": [
+        "brining",
+        "barbecue rubs",
+        "biscuit dough",
+        "pie crust",
+        "diner-style cooking",
+        "smoke-inspired flavors without a smoker"
+      ],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "American Recipes",
+          "recipes": [
+            "burger",
+            "fried chicken",
+            "mac and cheese",
+            "bbq ribs",
+            "pulled pork",
+            "cornbread",
+            "gumbo",
+            "clam chowder",
+            "chili",
+            "caesar salad",
+            "cobb salad",
+            "pancakes",
+            "apple pie",
+            "brownies",
+            "chocolate chip cookies",
+            "new york cheesecake"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mexico",
+      "name": "Mexico",
+      "focus": "corn, chiles, beans, masa, salsas, slow meats, herbs, and acidity",
+      "coreSkills": ["salsa making", "chile toasting", "masa", "braising meats", "taco assembly", "bean cookery"],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Mexican Recipes",
+          "recipes": [
+            "corn tortillas",
+            "pico de gallo",
+            "salsa roja",
+            "salsa verde",
+            "guacamole",
+            "tacos al pastor",
+            "carnitas",
+            "cochinita pibil",
+            "chicken tinga",
+            "mole poblano",
+            "chilaquiles",
+            "pozole",
+            "tamales",
+            "elotes",
+            "flan"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cuba",
+      "name": "Cuba",
+      "focus": "rice, beans, pork, citrus, garlic, plantains, slow cooking, and Caribbean-Spanish-African influence",
+      "coreSkills": ["citrus marinades", "rice and beans", "slow shredded meats", "plantain frying"],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Cuban Recipes",
+          "recipes": [
+            "ropa vieja",
+            "lechon asado",
+            "mojo sauce",
+            "moros y cristianos",
+            "arroz con pollo",
+            "picadillo",
+            "yuca con mojo",
+            "tostones",
+            "maduros",
+            "cuban sandwich",
+            "flan de leche",
+            "tres leches"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "korea",
+      "name": "Korea",
+      "focus": "fermentation, barbecue, rice bowls, stews, and banchan",
+      "coreSkills": [],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Korean Recipes",
+          "recipes": [
+            "kimchi",
+            "bulgogi",
+            "bibimbap",
+            "kimchi jjigae",
+            "korean fried chicken",
+            "japchae",
+            "tteokbokki",
+            "doenjang jjigae",
+            "pajeon"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "name": "India",
+      "focus": "regional Indian home cooking through rice, breads, legumes, spices, and chutneys",
+      "coreSkills": [],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Indian Recipes",
+          "recipes": [
+            "dal",
+            "basmati rice",
+            "naan",
+            "roti",
+            "butter chicken",
+            "chana masala",
+            "palak paneer",
+            "biryani",
+            "aloo gobi",
+            "dosa-style pancakes",
+            "raita",
+            "chutneys",
+            "kheer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vietnam",
+      "name": "Vietnam",
+      "focus": "fresh herbs, broths, rice noodles, caramel, and fish sauce",
+      "coreSkills": [],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Vietnamese Recipes",
+          "recipes": [
+            "pho",
+            "bun cha",
+            "banh mi",
+            "fresh spring rolls",
+            "fried spring rolls",
+            "caramel pork",
+            "shaking beef",
+            "nuoc cham",
+            "vietnamese iced coffee"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "levant",
+      "name": "Levant",
+      "focus": "mezze, grilling, grains, yogurt, herbs, tahini, and legumes",
+      "coreSkills": [],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Levantine Recipes",
+          "recipes": [
+            "hummus",
+            "baba ganoush",
+            "tabbouleh",
+            "fattoush",
+            "falafel",
+            "shawarma",
+            "kofta",
+            "mujaddara",
+            "labneh",
+            "baklava"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "morocco_maghreb",
+      "name": "Morocco And Maghreb",
+      "focus": "couscous, tagines, preserved lemons, spices, mint tea, and semolina breads",
+      "coreSkills": [],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Moroccan And Maghreb Recipes",
+          "recipes": [
+            "couscous",
+            "chicken tagine with preserved lemon",
+            "lamb tagine with prunes",
+            "harira",
+            "zaalouk",
+            "briouats",
+            "msemen",
+            "mint tea",
+            "orange blossom desserts"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "greece_turkey_eastern_mediterranean",
+      "name": "Greece, Turkey, And Eastern Mediterranean",
+      "focus": "grilled meats, yogurt, phyllo, olive oil, seafood, and mezze",
+      "coreSkills": [],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Eastern Mediterranean Recipes",
+          "recipes": [
+            "greek salad",
+            "tzatziki",
+            "moussaka",
+            "souvlaki",
+            "spanakopita",
+            "baklava",
+            "menemen",
+            "lahmacun",
+            "borek",
+            "lentil soup",
+            "grilled fish"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "peru",
+      "name": "Peru",
+      "focus": "Indigenous, Spanish, Japanese, Chinese, and African influences",
+      "coreSkills": [],
+      "groups": [
+        {
+          "id": "classic",
+          "name": "Peruvian Recipes",
+          "recipes": [
+            "ceviche",
+            "lomo saltado",
+            "aji de gallina",
+            "causa limena",
+            "anticuchos",
+            "arroz chaufa",
+            "papa a la huancaina",
+            "suspiro limeno"
+          ]
+        }
+      ]
+    }
+  ]
+}
