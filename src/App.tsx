@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { Link, Route, Routes, useParams } from "react-router-dom";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
+import { Link, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { ArrowLeft, BookOpen, ChefHat, Search, Sparkles, Utensils } from "lucide-react";
 import { getImagePath, getRecipeBySlug, getTemplatePath, recipeBook, recipes } from "./data/recipeBook";
 
@@ -21,6 +21,29 @@ function RecipeImage({ slug, title, className }: RecipeImageProps) {
       onError={() => setSrc(getTemplatePath())}
     />
   );
+}
+
+function ScrollToTop() {
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    if (!("scrollRestoration" in window.history)) {
+      return undefined;
+    }
+
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    window.scrollTo({ left: 0, top: 0, behavior: "auto" });
+  }, [pathname, search]);
+
+  return null;
 }
 
 function HomePage() {
@@ -199,9 +222,12 @@ function RecipePage() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/recipe/:slug" element={<RecipePage />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/recipe/:slug" element={<RecipePage />} />
+      </Routes>
+    </>
   );
 }
