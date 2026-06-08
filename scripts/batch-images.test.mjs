@@ -108,6 +108,8 @@ describe("batch image pipeline", () => {
       webpDir: path.join(tempRoot, "webp"),
       stateDir: path.join(tempRoot, "state"),
       zipPath: path.join(tempRoot, "zip/recipes.zip"),
+      zipPartsDir: path.join(tempRoot, "zip/recipes.zip.parts"),
+      zipManifestPath: path.join(tempRoot, "zip/recipes.zip.parts/manifest.json"),
       statePath: path.join(tempRoot, "state/state.json"),
     };
     await mkdir(paths.pngDir, { recursive: true });

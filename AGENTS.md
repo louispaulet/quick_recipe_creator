@@ -15,7 +15,7 @@ Build and maintain a static online recipe book, "The Essential Home-Cook Atlas",
   - `make deploy` runs tests, builds, and publishes `dist` with the `gh-pages` package.
 - Always commit and push completed work unless the user explicitly says not to.
 - Never commit secrets, `.env.local`, `node_modules`, `dist`, logs, or temporary batch state.
-- Do commit generated recipe PNGs, generated recipe WebPs, and the PNG zip archive once real generation output exists.
+- Do commit generated recipe PNGs, generated recipe WebPs, and Git-safe PNG zip parts once real generation output exists.
 
 ## OpenAI And Image Generation
 
@@ -27,5 +27,5 @@ Build and maintain a static online recipe book, "The Essential Home-Cook Atlas",
 
 ## Git
 
-- Before committing, check `git status --short` and verify `node_modules`, `.env.local`, and `dist` are not staged.
+- Before committing, check `git status --short` and verify `node_modules`, `.env.local`, `dist`, `.batch`, and the monolithic `recipe-card-pngs.zip` are not staged.
 - Prefer focused commit messages that describe the completed project change.

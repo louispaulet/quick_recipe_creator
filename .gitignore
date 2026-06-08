@@ -228,8 +228,9 @@ pnpm-debug.log*
 .env.*.local
 
 # Local OpenAI batch scratch state.
-# Generated PNG/WebP assets and the zip archive are intentionally versioned.
+# Generated PNG/WebP assets and split zip parts are intentionally versioned.
 .batch/
+assets/generated/recipe-card-pngs.zip
 *.jsonl
 *.tmp
 

@@ -61,9 +61,16 @@ Outputs:
 
 - Full PNGs: `assets/generated/png/*.png`
 - Website WebPs: `public/images/recipes/*.webp`
-- Versioned PNG archive: `assets/generated/recipe-card-pngs.zip`
+- Local PNG archive: `assets/generated/recipe-card-pngs.zip`
+- Versioned PNG archive parts: `assets/generated/recipe-card-pngs.zip.parts/*`
 
 Tests mock the batch flow and must not submit live batches. Real generation is asynchronous, so poll regularly after submission. `make images-poll-retry` materializes completed output and submits another batch for missing or failed assets until every recipe has PNG and WebP output or the attempt limit is reached.
+
+The PNG archive is larger than GitHub's single-file limit, so the script also writes split parts under 95 MB each. Rebuild the local zip from a clone with:
+
+```bash
+cat assets/generated/recipe-card-pngs.zip.parts/recipe-card-pngs.zip.part-* > assets/generated/recipe-card-pngs.zip
+```
 
 OpenAI's current Batch API supports `/v1/responses`; the real batch path uses that endpoint with the hosted image generation tool and the template image as an input. The script also includes an `/v1/images/edits` JSONL builder using `gpt-image-2` so the repo is ready if that endpoint is enabled for Batch.
 
@@ -84,7 +91,7 @@ Commit:
 - Source files
 - `package-lock.json`
 - Template image
-- Generated PNGs, WebPs, and the PNG zip once real generation completes
+- Generated PNGs, WebPs, and PNG zip parts once real generation completes
 
 Do not commit:
 
@@ -92,4 +99,5 @@ Do not commit:
 - `dist`
 - `.env.local`
 - `.batch`
+- `assets/generated/recipe-card-pngs.zip`
 - Logs or temporary JSONL files

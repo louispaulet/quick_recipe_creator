@@ -1,0 +1,37 @@
+{
+  "archive": "recipe-card-pngs.zip",
+  "sourceDirectory": "assets/generated/png",
+  "size": 646974814,
+  "partSize": 99614720,
+  "parts": [
+    {
+      "file": "recipe-card-pngs.zip.part-001",
+      "size": 99614720
+    },
+    {
+      "file": "recipe-card-pngs.zip.part-002",
+      "size": 99614720
+    },
+    {
+      "file": "recipe-card-pngs.zip.part-003",
+      "size": 99614720
+    },
+    {
+      "file": "recipe-card-pngs.zip.part-004",
+      "size": 99614720
+    },
+    {
+      "file": "recipe-card-pngs.zip.part-005",
+      "size": 99614720
+    },
+    {
+      "file": "recipe-card-pngs.zip.part-006",
+      "size": 99614720
+    },
+    {
+      "file": "recipe-card-pngs.zip.part-007",
+      "size": 49286494
+    }
+  ],
+  "restoreCommand": "cat assets/generated/recipe-card-pngs.zip.parts/recipe-card-pngs.zip.part-* > assets/generated/recipe-card-pngs.zip"
+}

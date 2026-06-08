@@ -2,8 +2,9 @@
 
 import archiver from "archiver";
 import fs from "node:fs";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
+import readline from "node:readline";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
@@ -28,6 +29,8 @@ export const PATHS = {
   pngDir: path.join(rootDir, "assets/generated/png"),
   webpDir: path.join(rootDir, "public/images/recipes"),
   zipPath: path.join(rootDir, "assets/generated/recipe-card-pngs.zip"),
+  zipPartsDir: path.join(rootDir, "assets/generated/recipe-card-pngs.zip.parts"),
+  zipManifestPath: path.join(rootDir, "assets/generated/recipe-card-pngs.zip.parts/manifest.json"),
   stateDir: path.join(rootDir, ".batch"),
   statePath: path.join(rootDir, ".batch/recipe-image-state.json"),
   inputPath: path.join(rootDir, ".batch/recipe-image-input.jsonl"),
@@ -238,6 +241,7 @@ export async function ensureDirs(paths = PATHS) {
   await mkdir(paths.pngDir, { recursive: true });
   await mkdir(paths.webpDir, { recursive: true });
   await mkdir(path.dirname(paths.zipPath), { recursive: true });
+  await mkdir(paths.zipPartsDir, { recursive: true });
 }
 
 export async function loadState(paths = PATHS) {
@@ -436,6 +440,29 @@ export async function saveGeneratedImagesFromRows(outputRows, paths = PATHS) {
   return saved;
 }
 
+export async function saveGeneratedImagesFromJsonlFile(filePath, paths = PATHS) {
+  await ensureDirs(paths);
+  const saved = [];
+  const input = fs.createReadStream(filePath, { encoding: "utf8" });
+  const lines = readline.createInterface({ input, crlfDelay: Infinity });
+
+  for await (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+    const row = JSON.parse(trimmed);
+    const slug = slugFromCustomId(row.custom_id);
+    const base64 = extractImageBase64(row.response?.body);
+    if (!base64) continue;
+    const assets = assetPathsForRecipe({ slug }, paths);
+    const png = Buffer.from(base64, "base64");
+    await writeFile(assets.png, png);
+    await sharp(png).webp({ quality: 86 }).toFile(assets.webp);
+    saved.push(slug);
+  }
+
+  return saved;
+}
+
 export async function rebuildAssets(paths = PATHS) {
   await ensureDirs(paths);
   const recipes = await loadRecipes(paths.recipesJson);
@@ -462,7 +489,70 @@ export async function zipPngs(paths = PATHS) {
     archive.directory(paths.pngDir, false);
     archive.finalize();
   });
+  await splitLargeZip(paths);
   return paths.zipPath;
+}
+
+export async function splitLargeZip(paths = PATHS, partSizeBytes = 95 * 1024 * 1024) {
+  await ensureDirs(paths);
+  await rm(paths.zipPartsDir, { recursive: true, force: true });
+  await mkdir(paths.zipPartsDir, { recursive: true });
+
+  const zipStats = await stat(paths.zipPath);
+  const readStream = fs.createReadStream(paths.zipPath, { highWaterMark: 1024 * 1024 });
+  const parts = [];
+  let partNumber = 1;
+  let currentSize = 0;
+  let currentPath = path.join(paths.zipPartsDir, `recipe-card-pngs.zip.part-${String(partNumber).padStart(3, "0")}`);
+  let currentStream = fs.createWriteStream(currentPath);
+
+  const openNextPart = async () => {
+    await new Promise((resolve, reject) => {
+      currentStream.end(resolve);
+      currentStream.on("error", reject);
+    });
+    parts.push({ file: path.basename(currentPath), size: currentSize });
+    partNumber += 1;
+    currentSize = 0;
+    currentPath = path.join(paths.zipPartsDir, `recipe-card-pngs.zip.part-${String(partNumber).padStart(3, "0")}`);
+    currentStream = fs.createWriteStream(currentPath);
+  };
+
+  for await (const chunk of readStream) {
+    let offset = 0;
+    while (offset < chunk.length) {
+      const capacity = partSizeBytes - currentSize;
+      const slice = chunk.subarray(offset, offset + capacity);
+      currentStream.write(slice);
+      currentSize += slice.length;
+      offset += slice.length;
+      if (currentSize === partSizeBytes) {
+        await openNextPart();
+      }
+    }
+  }
+
+  await new Promise((resolve, reject) => {
+    currentStream.end(resolve);
+    currentStream.on("error", reject);
+  });
+  if (currentSize > 0 || parts.length === 0) {
+    parts.push({ file: path.basename(currentPath), size: currentSize });
+  } else {
+    await rm(currentPath, { force: true });
+  }
+
+  const manifest = {
+    archive: path.basename(paths.zipPath),
+    sourceDirectory: "assets/generated/png",
+    size: zipStats.size,
+    partSize: partSizeBytes,
+    parts,
+    restoreCommand:
+      "cat assets/generated/recipe-card-pngs.zip.parts/recipe-card-pngs.zip.part-* > assets/generated/recipe-card-pngs.zip",
+  };
+  await writeFile(paths.zipManifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+  return manifest;
 }
 
 export async function pollLatestBatch(paths = PATHS) {
@@ -478,8 +568,7 @@ export async function pollLatestBatch(paths = PATHS) {
 
   if (batch.output_file_id) {
     await downloadFileContent(batch.output_file_id, paths.outputPath);
-    const outputRows = parseJsonl(await readFile(paths.outputPath, "utf8"));
-    const saved = await saveGeneratedImagesFromRows(outputRows, paths);
+    const saved = await saveGeneratedImagesFromJsonlFile(paths.outputPath, paths);
     latest.savedCount = saved.length;
   }
 
