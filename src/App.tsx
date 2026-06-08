@@ -162,16 +162,18 @@ function RecipePage() {
         Back to atlas
       </Link>
       <article className="recipe-detail">
-        <div className="detail-media">
-          <RecipeImage slug={recipe.slug} title={recipe.title} className="detail-image" />
-        </div>
-        <div className="detail-copy">
+        <header className="detail-header">
           <p className="eyebrow">
             <ChefHat size={18} aria-hidden="true" />
             {recipe.cuisineName}
           </p>
           <h1>{recipe.title}</h1>
           <p>{recipe.focus}</p>
+        </header>
+        <div className="detail-media">
+          <RecipeImage slug={recipe.slug} title={recipe.title} className="detail-image" />
+        </div>
+        <div className="detail-meta">
           <dl className="metadata">
             <div>
               <dt>Collection</dt>

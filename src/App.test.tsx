@@ -23,7 +23,13 @@ describe("App", () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole("heading", { name: "Mapo Tofu" })).toBeInTheDocument();
-    expect(screen.getByText("mapo-tofu.webp")).toBeInTheDocument();
+    const heading = screen.getByRole("heading", { name: "Mapo Tofu" });
+    const image = screen.getByRole("img", { name: "Mapo Tofu recipe card" });
+    const assetName = screen.getByText("mapo-tofu.webp");
+
+    expect(heading).toBeInTheDocument();
+    expect(assetName).toBeInTheDocument();
+    expect(heading.compareDocumentPosition(image) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(image.compareDocumentPosition(assetName) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 });
